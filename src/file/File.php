@@ -1,7 +1,7 @@
 <?php
   namespace elpho\io\file;
 
-  use elpho\lang\String;
+  use elpho\lang\Text;
 
   class File{
     protected $nome;
@@ -33,7 +33,7 @@
       $this->conteudo = $conteudo;
     }
     public function setContent($conteudo){
-      $this->conteudo = new String($conteudo);
+      $this->conteudo = new Text($conteudo);
     }
     public function setType($tipo){
       $this->tipo = $tipo;
@@ -47,13 +47,13 @@
 
     //get
     public function getFullName(){
-      return new String($this->nome);
+      return new Text($this->nome);
     }
     public function getName(){
-      return new String(basename($this->getFullName()));
+      return new Text(basename($this->getFullName()));
     }
     public function getExtension(){
-      return new String($this->extensao);
+      return new Text($this->extensao);
     }
     public function getRawContent(){
       $content = $this->conteudo;
@@ -61,17 +61,17 @@
       return $content;
     }
     public function getContent(){
-      return new String($this->conteudo);
+      return new Text($this->conteudo);
     }
     public function exists(){
       return file_exists($this->nome);
     }
     public function getSize(){
-      if(!is_object($this->conteudo)) $this->conteudo = new String($this->conteudo);
+      if(!is_object($this->conteudo)) $this->conteudo = new Text($this->conteudo);
       return $this->conteudo->length();
     }
     public function getType(){
-      return new String($this->tipo);
+      return new Text($this->tipo);
     }
     public function getInfo(){
       return new ArrayList($this->getType(),$this->getSize());

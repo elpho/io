@@ -1,7 +1,7 @@
 <?php
   namespace elpho\io;
 
-  use elpho\lang\String;
+  use elpho\lang\Text;
   use elpho\lang\ArrayList;
   use elpho\io\file\File;
 
@@ -120,7 +120,7 @@
 
       $para = new ArrayList();
       $pagina = 0;
-      $destino = new String($this->destino);
+      $destino = new Text($this->destino);
       $destino = $destino->split(',');
 
       for($i = 0; $i<$destino->length(); $i++){

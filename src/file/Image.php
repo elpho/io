@@ -55,7 +55,7 @@
       $this->width = imagesx($res);
       $this->height = imagesy($res);
 
-      $this->conteudo = new String($conteudo);
+      $this->conteudo = new Text($conteudo);
     }
 
     //get

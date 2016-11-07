@@ -1,7 +1,7 @@
 <?php
   namespace elpho\io;
 
-  use elpho\lang\String;
+  use elpho\lang\Text;
 
   class IcmpPackage{
     private $data = "";
@@ -46,13 +46,13 @@
     }
 
     public function getData(){
-      return new String($this->data);
+      return new Text($this->data);
     }
     public function getType(){
-      return new String($this->type);
+      return new Text($this->type);
     }
     public function getCode(){
-      return new String($this->code);
+      return new Text($this->code);
     }
     public function getChecksum(){
       $data = $this->getData();
@@ -63,17 +63,17 @@
 
       while ($sum >> 16) $sum = ($sum >> 16) + ($sum & 0xffff);
 
-      return new String(pack('n*', ~$sum));
+      return new Text(pack('n*', ~$sum));
     }
     public function getIdentifier(){
-      return new String($this->identifier);
+      return new Text($this->identifier);
     }
     public function getSequence(){
-      return new String($this->sequence);
+      return new Text($this->sequence);
     }
 
     public function toString(){
-      return new String($this->getType().$this->getCode().$this->getChecksum().$this->getIdentifier().$this->getSequence().$this->getData());
+      return new Text($this->getType().$this->getCode().$this->getChecksum().$this->getIdentifier().$this->getSequence().$this->getData());
     }
     public function __toString(){
       return $this->toString()->toString();

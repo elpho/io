@@ -1,7 +1,7 @@
 <?php
   namespace elpho\io;
 
-  use elpho\lang\String;
+  use elpho\lang\Text;
 
   class Socket{
     private $handle;
@@ -21,11 +21,11 @@
       socket_set_option($this->handle, $level, $option, $value);
     }
     public function read($length){
-      return new String($this->checkIO(@socket_read($this->handle,$length,PHP_BINARY_READ)));
+      return new Text($this->checkIO(@socket_read($this->handle,$length,PHP_BINARY_READ)));
     }
     public function readTo($delimiters,$_=null){
       $delimiters = func_get_args();
-      $result = new String();
+      $result = new Text();
       while(true){
         $char = $this->read(1);
         if(in_array($char->toString(),$delimiters) and $result->toString()) break;

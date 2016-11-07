@@ -1,7 +1,7 @@
 <?php
   namespace elpho\io\file;
 
-  use elpho\lang\String;
+  use elpho\lang\Text;
 
   class Log{
 
@@ -25,7 +25,7 @@
       $this->file = null;
 
       if(is_string($text))
-        $text = new String($text);
+        $text = new Text($text);
 
       if($this->file == null)
         throw new NullPointerException();
@@ -37,7 +37,7 @@
         return;
       }
 
-      $time = new String(date($this->format));
+      $time = new Text(date($this->format));
 
       $this->file->writeLine($time->concat($sliced[0]));
       $this->file->save();
